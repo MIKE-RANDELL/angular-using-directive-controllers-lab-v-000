@@ -1,3 +1,14 @@
+function ContactFormatController($scope) {
+  //this.formatUsername = function() {
+      $scope.username = $scope.username.toLowerCase()
+  //};
+};
+
+angular
+  .module('app')
+  .controller('ContactFormatController', ContactFormatController)
+
+
 function ContactCard() {
 	return {
 		scope: {
@@ -16,10 +27,12 @@ function ContactCard() {
 				'<label>Phone:</label>',
 				'{{ phone }}',
 				'<label>Username:</label>',
-				'<span class="username">{{ username }}</span>',
+				'<span class="username"> {{username}} </span>', //'<button ng-click="ctrl.formatUsername()">Change Handle</button>',
 			'</div>'
 		].join(''),
-		restrict: 'E'
+		restrict: 'E',
+		//require: ['ContactFormatController'],
+		controller: 'ContactFormatController as ctrl'
 	};
 }
 
